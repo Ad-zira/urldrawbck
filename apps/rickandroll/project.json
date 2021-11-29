@@ -1,0 +1,52 @@
+{
+  "root": "apps/rickandroll",
+  "sourceRoot": "apps/rickandroll/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/rickandroll",
+        "main": "apps/rickandroll/src/main.ts",
+        "tsConfig": "apps/rickandroll/tsconfig.app.json",
+        "assets": ["apps/rickandroll/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/rickandroll/src/environments/environment.ts",
+              "with": "apps/rickandroll/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "rickandroll:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rickandroll/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rickandroll"],
+      "options": {
+        "jestConfig": "apps/rickandroll/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
