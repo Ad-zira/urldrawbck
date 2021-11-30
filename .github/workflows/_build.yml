@@ -1,0 +1,11 @@
+name: Build and Deploy
+on: 
+  push: 
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Build
+        run: echo GitHub Action Running
