@@ -8,4 +8,4 @@ jobs:
     environment: Production
     steps:
       - name: Build
-          run: echo GitHub Action Running
+        run: echo GitHub Action Running
